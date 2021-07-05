@@ -5,8 +5,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.apache.log4j.Logger;
-
 import com.tsv.patienttransfer.business.connectors.FhirServiceConnector;
 import com.tsv.patienttransfer.dto.PatientDto;
 import com.tsv.patienttransfer.exceptions.ApplicationException;
@@ -17,8 +15,6 @@ import com.tsv.patienttransfer.persistence.Patient;
 @Stateless
 public class TransferPatientManager {
 	
-	private static Logger log = Logger.getLogger(TransferPatientManager.class);
-
 	@PersistenceContext(unitName = "transferPatientDS")
 	private EntityManager em;
 
