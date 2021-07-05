@@ -2,4 +2,5 @@
 
 1. mvn clean package
 2. cd docker
-3. docker-compose up --build
+3. docker build -t wildfly-image .
+4. docker-compose up
