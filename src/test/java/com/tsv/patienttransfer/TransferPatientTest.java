@@ -1,4 +1,4 @@
-package tsv.app.transferpatient;
+package com.tsv.patienttransfer;
 
 public class TransferPatientTest {
 

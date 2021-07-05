@@ -1,4 +1,4 @@
-package tsv.app.transferpatient;
+package com.tsv.patienttransfer;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
