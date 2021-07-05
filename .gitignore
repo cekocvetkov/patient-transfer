@@ -1,0 +1,11 @@
+target/
+
+.classpath
+.project
+.metadata
+.loadpath
+.settings/
+
+*.class
+*.jar
+*.war

@@ -1,0 +1,11 @@
+batch
+
+module add --name=org.postgresql --resources=/tmp/postgresql-42.2.22.jar --dependencies=javax.api,javax.transaction.api
+
+/subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql,driver-module-name=org.postgresql,driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)
+
+data-source add --jndi-name=java:/jboss/PostgresDS --name=PostgresDS --connection-url=jdbc:postgresql://postgres:5432/patientdb --driver-name=postgresql --user-name=postgres --password=123456
+
+
+
+run-batch

@@ -1,0 +1,32 @@
+version: '3'
+services:
+    postgres:
+        image: postgres
+        container_name: postgres
+        ports:
+          - "5432:5432"
+        environment:
+            - POSTGRES_DB=patientdb
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=123456
+            - POSTGRES_PORT=5432
+        volumes:
+            - ./create-table.sql:/docker-entrypoint-initdb.d/create-table.sql
+            
+    wildfly:
+        image: wildfly-image
+        container_name: wildfly
+        build: .
+        ports:
+            - "8080:8080"
+            - "9990:9990"
+        environment:
+            - DB_HOST=postgres
+            - DB_PORT=5432
+            - DB_NAME=patientdb
+            - DB_USER=postgres
+            - DB_PASS=123456
+            - DS_NAME=PostgresDS
+            - JNDI_NAME=java:/jboss/PostgresDS
+        depends_on:
+            - postgres

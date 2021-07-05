@@ -1,0 +1,18 @@
+Run Command for Postgres DB (is mapped to the docker compose yaml file):
+docker run --name some-postgres -p 5433:5432 -e POSTGRES_PASSWORD=123456 -d postgres
+
+
+Docker Compose Start:
+(you can also add -d flag [detached mode])
+docker-compose -f docker-compose.yaml up -d
+
+Shut Down:
+docker-compose -f docker-compose.yaml down 
+
+docker exec -it postgres(container name) /bin/bash
+
+
+README For git:
+
+1. mvn clean package
+2. docker-compose up --build
