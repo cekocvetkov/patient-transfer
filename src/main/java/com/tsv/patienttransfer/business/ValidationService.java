@@ -11,11 +11,11 @@ import com.tsv.patienttransfer.rest.models.FhirUrlRequest;
 public class ValidationService {
 	private final static String URL_REGEX = "(https?:\\/\\/)?([\\w\\-])+\\.{1}([a-zA-Z]{2,63})([\\/\\w-]*)*\\/?\\??([^#\\n\\r]*)?#?([^\\n\\r]*)";
 	
-	public void validateFhirParam(FhirUrlRequest fhirParam) throws BadRequestException {
-		if(fhirParam.getFhirUrl() == null)
+	public void validateFhirUrlRequest(FhirUrlRequest fhirUrlRequest) throws BadRequestException {
+		if(fhirUrlRequest.getFhirUrl() == null)
 			throw new BadRequestException("Request Body must contain a valid fhirUrl parameter");
 		
-		if(!Pattern.matches(URL_REGEX, fhirParam.getFhirUrl()))
+		if(!Pattern.matches(URL_REGEX, fhirUrlRequest.getFhirUrl()))
 			throw new BadRequestException("Not a valid Url");
 	}
 }

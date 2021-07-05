@@ -17,6 +17,6 @@ public class FhirUrlRequest {
 
 	@Override
 	public String toString() {
-		return "FhirParam [fhirUrl=" + fhirUrl + "]";
+		return "FhirUrlRequest [fhirUrl=" + fhirUrl + "]";
 	}
 }

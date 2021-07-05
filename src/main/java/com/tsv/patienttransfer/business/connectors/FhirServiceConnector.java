@@ -24,7 +24,8 @@ import com.tsv.patienttransfer.exceptions.NotFoundException;
 
 @Singleton
 public class FhirServiceConnector {
-	static Logger log = Logger.getLogger(FhirServiceConnector.class);
+	
+	private static Logger log = Logger.getLogger(FhirServiceConnector.class);
 
 	private Client client;
 
@@ -53,7 +54,6 @@ public class FhirServiceConnector {
 
 	private void validateFhirServiceResponse(Response response) throws NotFoundException, ApplicationException {
 		StatusType status = response.getStatusInfo();
-		System.out.println(status);
 		if(status != Status.OK) {
 			if(status == Status.NOT_FOUND) {
 				throw new NotFoundException("Fhir Patient Data Not Found");

@@ -3,6 +3,7 @@ package com.tsv.patienttransfer.dto;
 import java.util.Date;
 
 public class PatientDto {
+	
 	private String url;
 	private String family;
 	private String given;

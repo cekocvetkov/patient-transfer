@@ -19,42 +19,44 @@ import com.tsv.patienttransfer.rest.models.FhirUrlRequest;
 import com.tsv.patienttransfer.rest.models.PatientResponse;
 import com.tsv.patienttransfer.rest.models.TransferPatientResponse;
 
-
 @Path("")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class TransferPatientController{
-	
+public class TransferPatientController {
+
 	@Inject
 	private TransferPatientManager transferPatientService;
-	
+
 	@Inject
 	private PatientManager patientManager;
-	
+
 	@Inject
 	private ValidationService validationService;
-	
+
 	@Inject
 	private PatientResponseMapper patientResponseMapper;
-	
-    @GET
-    @Path("/transferedPatient")
-    public Response transferedPatient(FhirUrlRequest request) throws ApplicationException {
-    	validationService.validateFhirParam(request);
-    	
-    	PatientResponse patient = patientResponseMapper.toPatientResponse(patientManager.getPatient(request.getFhirUrl())); 
-    	
-        return Response.ok().entity(patient).build();
-    }
-    
-    @POST
-    @Path("/transferFhirPatient")
-    public Response transferFhirPatient(FhirUrlRequest request) throws ApplicationException {
-    	validationService.validateFhirParam(request);
-    	
-    	transferPatientService.transferFhirPatient(request.getFhirUrl());
-    	
-        return Response.status(Status.CREATED).entity(new TransferPatientResponse("Successfully transferred patient from url: "+request.getFhirUrl())).build();
-    }
+
+	@GET
+	@Path("/transferedPatient")
+	public Response transferedPatient(FhirUrlRequest request) throws ApplicationException {
+		validationService.validateFhirUrlRequest(request);
+
+		PatientResponse patient = patientResponseMapper
+				.toPatientResponse(patientManager.getPatient(request.getFhirUrl()));
+
+		return Response.ok().entity(patient).build();
+	}
+
+	@POST
+	@Path("/transferFhirPatient")
+	public Response transferFhirPatient(FhirUrlRequest request) throws ApplicationException {
+		validationService.validateFhirUrlRequest(request);
+
+		transferPatientService.transferFhirPatient(request.getFhirUrl());
+
+		return Response.status(Status.CREATED).entity(
+				new TransferPatientResponse("Successfully transferred patient from url: " + request.getFhirUrl()))
+				.build();
+	}
 
 }

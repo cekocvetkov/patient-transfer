@@ -10,7 +10,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.PrePersist;
 
 @NamedQuery(name = "Patient.findByUrl", query = "SELECT p FROM Patient p WHERE p.url = :url")
-
 @Entity
 public class Patient {
 

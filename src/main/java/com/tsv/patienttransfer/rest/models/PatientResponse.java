@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class PatientResponse {
+	
 	private String url;
 	private String family;
 	private String given;
@@ -19,7 +20,8 @@ public class PatientResponse {
 	public PatientResponse() {
 	}
 
-	public PatientResponse(String url, String family, String given, String prefix, String suffix, String gender, Date birthDate) {
+	public PatientResponse(String url, String family, String given, String prefix, String suffix, String gender,
+			Date birthDate) {
 		this.url = url;
 		this.family = family;
 		this.given = given;
@@ -87,8 +89,8 @@ public class PatientResponse {
 
 	@Override
 	public String toString() {
-		return "PatientDto [url=" + url + ", family=" + family + ", given=" + given + ", prefix=" + prefix + ", suffix="
-				+ suffix + ", gender=" + gender + ", birthDate=" + birthDate + "]";
+		return "PatientResponse [url=" + url + ", family=" + family + ", given=" + given + ", prefix=" + prefix
+				+ ", suffix=" + suffix + ", gender=" + gender + ", birthDate=" + birthDate + "]";
 	}
 
 }

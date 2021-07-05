@@ -3,8 +3,9 @@ package com.tsv.patienttransfer.rest.exceptionhandling;
 import javax.ws.rs.core.Response.Status;
 
 public class ErrorResponse {
-	Status status;
-	String message;
+	
+	private Status status;
+	private String message;
 
 	public ErrorResponse(Status status, String message) {
 		this.status = status;

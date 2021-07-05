@@ -16,13 +16,14 @@ import com.tsv.patienttransfer.persistence.Patient;
 
 @Stateless
 public class PatientManager {
-	static Logger log = Logger.getLogger(PatientManager.class);
+	
+	private static Logger log = Logger.getLogger(PatientManager.class);
 
 	@PersistenceContext(unitName = "transferPatientDS")
-	EntityManager em;
+	private EntityManager em;
 
 	@Inject
-	PatientDtoEntityMapper patientDtoEntityMapper;
+	private PatientDtoEntityMapper patientDtoEntityMapper;
 	
 	public PatientDto getPatient(String url) throws NotFoundException {
 		Patient patient = getPatientByUrl(url);

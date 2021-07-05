@@ -16,10 +16,11 @@ import com.tsv.patienttransfer.persistence.Patient;
 
 @Stateless
 public class TransferPatientManager {
-	static Logger log = Logger.getLogger(TransferPatientManager.class);
+	
+	private static Logger log = Logger.getLogger(TransferPatientManager.class);
 
 	@PersistenceContext(unitName = "transferPatientDS")
-	EntityManager em;
+	private EntityManager em;
 
 	@Inject
 	private PatientManager patientManager;
@@ -37,9 +38,9 @@ public class TransferPatientManager {
 
 		if (isPatientAlreadyTransferred(patient)) {
 			throw new PatientAlreadyTransferredException("Patient for url: " + url + " already transferred");
-		} else {
-			em.persist(patient);
 		}
+		
+		em.persist(patient);
 	}
 
 	private boolean isPatientAlreadyTransferred(Patient patient) {
